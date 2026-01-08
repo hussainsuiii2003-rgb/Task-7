@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project Management Tool</title>
+  <style>
+    body { font-family: Arial; background:#f4f4f4; padding:20px; }
+    input, select, button { padding:8px; margin:5px; }
+    .box { background:white; padding:15px; margin-top:10px; }
+  </style>
+</head>
+
+<body>
+
+<h2>Simple Project Management Tool</h2>
+
+<input id="project" placeholder="Project Name">
+<input id="task" placeholder="Task Name">
+<input type="date" id="date">
+
+<select id="status">
+  <option>Pending</option>
+  <option>Completed</option>
+</select>
+
+<button onclick="addProject()">Add</button>
+
+<div id="list"></div>
+
+<script>
+function addProject() {
+  let project = document.getElementById("project").value;
+  let task = document.getElementById("task").value;
+  let date = document.getElementById("date").value;
+  let status = document.getElementById("status").value;
+
+  if(project === "" || task === "") {
+    alert("Fill all fields");
+    return;
+  }
+
+  let div = document.createElement("div");
+  div.className = "box";
+  div.innerHTML = `
+    <b>Project:</b> ${project}<br>
+    <b>Task:</b> ${task}<br>
+    <b>Deadline:</b> ${date}<br>
+    <b>Status:</b> ${status}
+  `;
+  document.getElementById("list").appendChild(div);
+
+  document.getElementById("project").value = "";
+  document.getElementById("task").value = "";
+}
+</script>
+
+</body>
+</html>
